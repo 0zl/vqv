@@ -16,7 +16,7 @@ class Quantizer(eqx.Module):
     B: float
     
     def __init__(self, num_embeddings, embedding_dim, commitment_cost, sparsity_cost, initialize_embedding_b, embedding_seed):
-        super().__init__()
+        # super(Quantizer, self).__init__()
         
         self.num_embeddings = num_embeddings
         self.embedding_dim = embedding_dim
@@ -88,7 +88,7 @@ class ResidualLayer(eqx.Module):
     resblock: nn.Sequential
     
     def __init__(self, in_channels: int, out_channels: int):
-        super().__init__()
+        # super(ResidualLayer, self).__init__()
         
         self.resblock = nn.Sequential([
             nn.Conv2d(

@@ -15,7 +15,6 @@ vae = model.VQVSHX(
     ),
     scheduler_gamma=0,
     weight_decay=0.0,
-    transition_steps=1e5,
 )
 
 print(vae)
