@@ -1,11 +1,9 @@
 import jax
-import optax
-import jax.numpy as jnp
 import equinox as eqx
 import equinox.nn as nn
 import vq
 
-from typing import Any, List
+from typing import List
 
 
 class VQVSHX(eqx.Module):
