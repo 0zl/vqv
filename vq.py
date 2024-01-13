@@ -90,22 +90,24 @@ class ResidualLayer(eqx.Module):
     def __init__(self, in_channels: int, out_channels: int):
         super().__init__()
         
-        self.resblock = nn.Sequential(
+        self.resblock = nn.Sequential([
             nn.Conv2d(
                 in_channels=in_channels,
                 out_channels=out_channels,
                 kernel_size=3,
                 padding=1,
-                use_bias=False
+                use_bias=False,
+                key=jax.random.PRNGKey(0)
             ),
             nn.Lambda(jax.nn.relu),
             nn.Conv2d(
                 out_channels,
                 out_channels,
                 kernel_size=1,
-                use_bias=False
+                use_bias=False,
+                key=jax.random.PRNGKey(0)
             )
-        )
+        ])
     
     def __call__(self, x: jnp.ndarray) -> jnp.ndarray:
         return x + self.resblock(x)
